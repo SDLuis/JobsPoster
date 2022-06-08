@@ -78,7 +78,7 @@ export default function RegistryComponent() {
           <div className="card login-card ">
             <div className="row no-gutters">
               <Form.Group className="col-md-5">
-                <img src={imgRegister} alt="login" class="login-card-img" />
+                <img src={imgRegister} alt="login" className="login-card-img" />
               </Form.Group>
               <Form.Group className="col-md-7">
                 <Form.Group className="card-body">
