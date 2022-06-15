@@ -1,4 +1,4 @@
-body {
+.body {
   font-family: "Karla", sans-serif;
   background-color: #d0d0ce;
   min-height: 100vh;
@@ -19,11 +19,6 @@ body {
 }
 .login-card .card-body {
   padding: 85px 60px 60px;
-}
-@media (max-width: 422px) {
-  .login-card .card-body {
-    padding: 35px 24px;
-  }
 }
 .login-card-description {
   font-size: 30px;
@@ -80,18 +75,31 @@ body {
   color: #0d2366;
   margin-bottom: 60px;
 }
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .login-card-footer-text {
     margin-bottom: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .login-card .card-body {
+    padding: 35px 24px;
+  }
+  
+  .login-card-img {
+    max-height: 0px;
   }
 }
 .input {
   height: 100px;
 }
 
-h1{
+h1 {
   text-align: left;
   margin-top: -30px;
   font-weight: bold;
   font-size: 50px;
+}
+.container {
+  display: flex;
+  justify-content: center;
 }

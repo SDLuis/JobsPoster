@@ -1,4 +1,4 @@
-body {
+.Body {
   font-family: "Karla", sans-serif;
   background-color: #d0d0ce;
   min-height: 100vh;
@@ -79,9 +79,9 @@ body {
 .login-card-footer-text {
   font-size: 20px;
   color: #0d2366;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .login-card-footer-text {
     margin-bottom: 24px;
   }
@@ -95,4 +95,8 @@ h1{
   margin-top: -30px;
   font-weight: bold;
   font-size: 50px;
+}
+.container{
+  display: flex;
+  justify-content: center;
 }

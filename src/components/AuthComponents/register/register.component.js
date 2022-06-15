@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
-import imgRegister from "../../img/register2.jpg";
+import imgRegister from "../../../img/register2.jpg";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
@@ -72,7 +72,7 @@ export default function RegistryComponent() {
   }, [registed, navigate]);
 
   return (
-    <body>
+    <div className="Body">
       <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div className="container">
           <div className="card login-card ">
@@ -156,6 +156,6 @@ export default function RegistryComponent() {
           </div>
         </div>
       </main>
-    </body>
+      </div>
   );
 }

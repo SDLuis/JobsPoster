@@ -1,16 +1,16 @@
-import React, { useState,/* useEffect*/ } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
-import imgLogin from "../../img/Login2.jpg";
+import imgLogin from "../../../img/Login2.jpg";
 import axios from "axios";
 
 function LoginComponent() {
-  //let navigate = useNavigate();
+  let navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [LoginStatus, setLoginStatus] = useState("");
-  //const [Logged, setLogged] = useState(false);
+  const [Logged, setLogged] = useState(false);
 
   const login = () => {
     axios
@@ -26,19 +26,18 @@ function LoginComponent() {
         if (response.data.message) {
           setLoginStatus(response.data.message);
         } else {
-          //setLogged(true);
-          console.log(response.data)
+          setLogged(true);
+          setLoginStatus(response.data);
         }
       });
   };
-  /*useEffect(() => {
+  useEffect(() => {
     if (Logged) {
       return navigate("/");
     }
-  }, [Logged, navigate]);*/
-
+  }, [Logged, navigate]);
   return (
-    <body>
+    <div className="Body">
       <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div className="container">
           <div className="card login-card ">
@@ -101,7 +100,7 @@ function LoginComponent() {
           </div>
         </div>
       </main>
-    </body>
+    </div>
   );
 }
 

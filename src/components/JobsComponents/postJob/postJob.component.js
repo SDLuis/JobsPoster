@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import Swal from "sweetalert2";
+import * as jobService from "../../../services/job.services";
 import "./postJob.css";
+import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import axios from "axios";
 
 const MySwal = withReactContent(Swal);
 
 export default function PostJobsComponent() {
-  const [workTitle, setWorkTitle] = useState(null);
-  const [Position, setPosition] = useState(null);
-  const [workType, setWorkType] = useState(null);
-  const [applyMethod, setApply_Method] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [formData, setFormData] = useState({
+    workTitle: "",
+    Position: "",
+    workType: "",
+    applyMethod: "",
+    description: "",
+  });
 
   function checkFilledFields() {
     if (
-      workTitle === "" ||
-      Position === "" ||
-      workType === "" ||
-      applyMethod === "" ||
-      description === ""
+      formData.workTitle === "" ||
+      formData.Position === "" ||
+      formData.workType === "" ||
+      formData.applyMethod === "" ||
+      formData.description === ""
     ) {
       return false;
     } else {
@@ -36,7 +38,7 @@ export default function PostJobsComponent() {
             type="Text"
             name="workTitle"
             onChange={(e) => {
-              setWorkTitle(e.target.value);
+              setFormData({ ...formData, workTitle: e.target.value });
             }}
           />
         </Form.Group>
@@ -46,7 +48,7 @@ export default function PostJobsComponent() {
             type="Text"
             name="workPosition"
             onChange={(e) => {
-              setPosition(e.target.value);
+              setFormData({ ...formData, Position: e.target.value });
             }}
           />
         </Form.Group>
@@ -56,7 +58,7 @@ export default function PostJobsComponent() {
             as="select"
             name="workType"
             onChange={(e) => {
-              setWorkType(e.target.value);
+              setFormData({ ...formData, workType: e.target.value });
             }}
           >
             <option>Select work type</option>
@@ -71,7 +73,7 @@ export default function PostJobsComponent() {
             type="Text"
             name="workApplyMethod"
             onChange={(e) => {
-              setApply_Method(e.target.value);
+              setFormData({ ...formData, applyMethod: e.target.value });
             }}
           />
         </Form.Group>
@@ -82,7 +84,7 @@ export default function PostJobsComponent() {
             rows={3}
             name="workDescription"
             onChange={(e) => {
-              setDescription(e.target.value);
+              setFormData({ ...formData, description: e.target.value });
             }}
           />
         </Form.Group>
@@ -91,21 +93,10 @@ export default function PostJobsComponent() {
             onClick={(e) => {
               e.preventDefault();
               if (checkFilledFields() === true) {
-                axios
-                  .post(
-                    `${process.env.REACT_APP_API_URL}/jobs/add`,
-                    {
-                      work_Title: workTitle,
-                      Position: Position,
-                      apply_Method: applyMethod,
-                      workType: workType,
-                      description: description,
-                    },
-                    { withCredentials: true }
-                  )
+                jobService
+                  .postJob(formData)
                   .then((res) => {
                     let serverResponse = res.status;
-                    console.log(res.data);
                     if (serverResponse === 200) {
                       MySwal.fire({
                         title: "Se anadio el trabajo correctamente",
