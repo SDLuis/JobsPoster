@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./jobList.css";
-import { Card } from "react-bootstrap";
+import {
+  faBriefcase,
+  faMapMarkedAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card, Button } from "react-bootstrap";
 import { getWorks } from "../../../services/job.services";
-import LoadingSpinner from "../../loading/loading.component";
+import LoadingSpinner from "../../Loading/loading.component";
 
 export default function JobsList() {
   const [jobs, setJobs] = useState([]);
@@ -18,19 +23,28 @@ export default function JobsList() {
 
   function JobsCategory(job) {
     return (
-      <section className="main-container">
-        <Card>
-          <Card.Header>{job.row.work_Title}</Card.Header>
-          <Card.Body>
-          <div>{job.row.workType}</div>
-          <div>{job.row.Position}</div>
-          <div>{job.row.apply_Method}</div>
+      <div key={job.row.Job_ID}>
+      <Card className="Job  position-relative shadow p-3 mb-5 bg-body rounded">
+        <Card.Header className="titulo">
+          <FontAwesomeIcon icon={faBriefcase} /> {job.row.work_Title}
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>{job.row.Position}</Card.Title>
+          <Card.Text>
+            <FontAwesomeIcon icon={faMapMarkedAlt} /> {job.row.workType}
+          </Card.Text>
+          <Card.Text className="cortar">{job.row.description}</Card.Text>
+          <Button
+            className="VerMas"
+            variant="outline-secondary"
+            size="sm"
+            href={`/Jobs/${job.row.Job_ID}/Details`}
+          >
+            Ver mas
+          </Button>
         </Card.Body>
-          <Card.Footer>
-            <div>{job.row.description} <a className="abstract-link-more" href={`/Jobs/${job.row.Job_ID}/Details`}> Más detalles </a></div>
-          </Card.Footer>
-        </Card>
-      </section>
+      </Card>
+    </div>
     );
   }
   if (loading) return <LoadingSpinner />;

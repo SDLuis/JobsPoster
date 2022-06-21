@@ -1,18 +1,25 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 100%;
-    border-radius: 5px;
-    text-align: center;
-    max-width: 80%;
+.Job {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  opacity: 0.9;
+}
+.titulo {
+  background-color: #474e4d;
+  font-size: 16px;
+  font-style: oblique;
+  color: aliceblue;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.main-container {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
+.cortar {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }

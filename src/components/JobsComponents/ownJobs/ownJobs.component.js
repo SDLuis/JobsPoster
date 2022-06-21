@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./jobList.css";
+import "./ownJobs.css";
 import { Card, Button } from "react-bootstrap";
 import { ownJobs, deleteJobs } from "../../../services/job.services";
-import LoadingSpinner from "../../loading/loading.component";
+import LoadingSpinner from "../../Loading/loading.component";
 
 export default function OwnJobs() {
   let navigate = useNavigate();

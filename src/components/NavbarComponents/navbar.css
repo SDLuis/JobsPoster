@@ -1,0 +1,15 @@
+.navbar{
+    background-color: #474E4D;
+    border-bottom: 1px solid #363636;
+    border-top: 1px solid #363636;
+    box-shadow: 0 2px 5px rgba(0,0,0,.125);
+    padding: .5rem 1rem;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+.brand-name{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: whitesmoke;
+}
