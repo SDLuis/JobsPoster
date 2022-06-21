@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./ownJobs.css";
 import { Card, Button } from "react-bootstrap";
 import { ownJobs, deleteJobs } from "../../../services/job.services";
-import LoadingSpinner from "../../Loading/loading.component";
+import LoadingSpinner from "../../loading/loading.component";
 
 export default function OwnJobs() {
   let navigate = useNavigate();

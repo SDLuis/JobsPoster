@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Button } from "react-bootstrap";
 import { getWorks } from "../../../services/job.services";
-import LoadingSpinner from "../../Loading/loading.component";
+import LoadingSpinner from "../../loading/loading.component";
 
 export default function JobsList() {
   const [jobs, setJobs] = useState([]);

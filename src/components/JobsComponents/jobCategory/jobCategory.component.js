@@ -3,7 +3,7 @@ import "../jobList/jobList.css";
 import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getWorksCategory } from "../../../services/job.services";
-import LoadingSpinner from "../../Loading/loading.component";
+import LoadingSpinner from "../../loading/loading.component";
 
 export default function JobsList() {
   const params = useParams();

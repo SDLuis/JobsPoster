@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./jobList.css";
 import { Card } from "react-bootstrap";
 import { findJobs } from "../../../services/job.services";
-import LoadingSpinner from "../../Loading/loading.component";
+import LoadingSpinner from "../../loading/loading.component";
 import { useParams } from "react-router-dom";
 import iconBack from '../../../img/icons8-back-48.png'
 
