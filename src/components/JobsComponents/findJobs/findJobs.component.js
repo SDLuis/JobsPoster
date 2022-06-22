@@ -33,9 +33,9 @@ export default function FindJobs() {
           {job.row.work_Title}
           </Card.Header>
         <Card.Body>
-          <div>{job.row.workType}</div>
-          <div>{job.row.Position}</div>
-          <div>{job.row.apply_Method}</div>
+          <Card.Text>{job.row.workType}</Card.Text>
+          <Card.Text>{job.row.Position}</Card.Text>
+          <Card.Text>{job.row.apply_Method}</Card.Text>
         </Card.Body>
         <Card.Footer>
           <div>{job.row.description}</div>

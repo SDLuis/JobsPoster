@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./login.css";
 import imgLogin from "../../../img/Login2.jpg";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function LoginComponent() {
   let navigate = useNavigate();
@@ -27,13 +28,14 @@ function LoginComponent() {
           setLoginStatus(response.data.message);
         } else {
           setLogged(true);
-          setLoginStatus(response.data);
+          setLoginStatus(response.data.loggedMessage);
+          Cookies.set('jwt',`${response.data.data}`, { expires: 7 })
         }
       });
   };
   useEffect(() => {
     if (Logged) {
-      return navigate("/");
+      return navigate("/jobs/owner");
     }
   }, [Logged, navigate]);
   return (
