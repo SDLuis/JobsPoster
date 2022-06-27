@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./jobList.css";
+import "./findJobs.css";
 import { Card } from "react-bootstrap";
 import { findJobs } from "../../../services/job.services";
 import LoadingSpinner from "../../loading/loading.component";

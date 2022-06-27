@@ -23,8 +23,7 @@ export default function JobsList() {
 
   function JobsCategory(job) {
     return (
-      <div key={job.row.Job_ID}>
-      <Card className="Job  position-relative shadow p-3 mb-5 bg-body rounded">
+      <Card className="Job position-relative shadow p-3 mb-5 bg-body rounded">
         <Card.Header className="titulo">
           <FontAwesomeIcon icon={faBriefcase} /> {job.row.work_Title}
         </Card.Header>
@@ -44,7 +43,6 @@ export default function JobsList() {
           </Button>
         </Card.Body>
       </Card>
-    </div>
     );
   }
   if (loading) return <LoadingSpinner />;

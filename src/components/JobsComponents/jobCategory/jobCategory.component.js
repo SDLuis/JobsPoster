@@ -21,17 +21,17 @@ export default function JobsList() {
 
   function JobsCategory(job) {
     return (
-      <section className="main-container">
-        <Card>
-          <Card.Header>{job.row.work_Title}</Card.Header>
-          <div>{job.row.workType}</div>
-          <div>{job.row.Position}</div>
-          <div>{job.row.apply_Method}</div>
+        <Card className="Job position-relative shadow p-3 mb-5 bg-body rounded">
+          <Card.Header className="titulo">{job.row.work_Title}</Card.Header>
+          <Card.Body>
+          <Card.Text>{job.row.workType}</Card.Text>
+          <Card.Text>{job.row.Position}</Card.Text>
+          <Card.Text>{job.row.apply_Method}</Card.Text>
+        </Card.Body>
           <Card.Footer>
             <div>{job.row.description} <a className="abstract-link-more" href={`/Jobs/${job.row.Job_ID}/Details`}> Más detalles </a></div>
           </Card.Footer>
         </Card>
-      </section>
     );
   }
 

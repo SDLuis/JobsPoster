@@ -10,9 +10,13 @@
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+.List{
+    width:80%;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-.main-container {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
+.Modificadores{
+    margin-left:5%;
 }

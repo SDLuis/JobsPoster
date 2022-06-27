@@ -29,7 +29,7 @@ function LoginComponent() {
         } else {
           setLogged(true);
           setLoginStatus(response.data.loggedMessage);
-          Cookies.set('jwt',`${response.data.data}`, { expires: 7 })
+          Cookies.set("jwt2",`${response.data.data}`, { expires: 7 })
         }
       });
   };
