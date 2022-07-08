@@ -3,41 +3,24 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import imgLogin from "../../../img/Login2.jpg";
-import axios from "axios";
-import Cookies from "js-cookie";
+import useUser from "../../../hooks/useUser"
 
 function LoginComponent() {
   let navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [LoginStatus, setLoginStatus] = useState("");
-  const [Logged, setLogged] = useState(false);
-
-  const login = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/auth/login`,
-        {
-          email: userEmail,
-          password: password,
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        if (response.data.message) {
-          setLoginStatus(response.data.message);
-        } else {
-          setLogged(true);
-          setLoginStatus(response.data.loggedMessage);
-          Cookies.set("jwt2",`${response.data.data}`, { expires: 7 })
-        }
-      });
-  };
+ // const [LoginStatus, setLoginStatus] = useState("");
+  const { login, isLogged } = useUser()
+  
   useEffect(() => {
-    if (Logged) {
+    if (isLogged) {
       return navigate("/jobs/owner");
     }
-  }, [Logged, navigate]);
+  }, [isLogged, navigate]);
+
+  function Login(){
+    return login({userEmail, password})
+  }
   return (
     <div className="Body">
       <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -82,13 +65,12 @@ function LoginComponent() {
                         type="submit"
                         onClick={(e) => {
                           e.preventDefault();
-                          login();
+                          Login();
                         }}
                       >
                         Login
                       </Button>
                     </Form.Group>
-                    <h2>{LoginStatus}</h2>
                     <p className="login-card-footer-text">
                       Don't have an account?{" "}
                       <a href="/register" className="text-reset">

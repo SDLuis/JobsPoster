@@ -16,7 +16,7 @@
     animation: spinner 1.5s linear infinite;
   }
   .spinner-container{
-    margin-top: 250px;
+    margin-top: 200px;
     display: flex;
     justify-content: center;
   }

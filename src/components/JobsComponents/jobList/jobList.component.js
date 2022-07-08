@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./jobList.css";
-import {
-  faBriefcase,
-  faMapMarkedAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Button } from "react-bootstrap";
 import { getWorks } from "../../../services/job.services";
@@ -23,14 +20,14 @@ export default function JobsList() {
 
   function JobsCategory(job) {
     return (
-      <Card className="Job position-relative shadow p-3 mb-5 bg-body rounded">
+      <Card className="Job position-relative mb-3 bg-body rounded">
         <Card.Header className="titulo">
           <FontAwesomeIcon icon={faBriefcase} /> {job.row.work_Title}
         </Card.Header>
         <Card.Body>
           <Card.Title>{job.row.Position}</Card.Title>
           <Card.Text>
-            <FontAwesomeIcon icon={faMapMarkedAlt} /> {job.row.workType}
+            <FontAwesomeIcon icon={faClock} /> {job.row.workType}
           </Card.Text>
           <Card.Text className="cortar">{job.row.description}</Card.Text>
           <Button
@@ -46,7 +43,11 @@ export default function JobsList() {
     );
   }
   if (loading) return <LoadingSpinner />;
-  return jobs.map((row) => {
-    return <JobsCategory key={row.Job_ID} row={row} />;
-  });
+  return (
+    <div className="Col">
+      {jobs.map((row) => {
+        return <JobsCategory key={row.Job_ID} row={row} />;
+      })}
+    </div>
+  );
 }

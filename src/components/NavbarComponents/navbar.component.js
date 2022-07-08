@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import "./navbar.css";
-import Cookies from "js-cookie";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useUser from "../../hooks/useUser";
+
 export default function NavbarComponent() {
-  const [logged, setLogged] = useState();
-  useEffect(() => {
-    if (Cookies.get("jwt2")) {
-      setLogged(true);
-    }
-    else{
-      setLogged(false)
-    }
-  }, [logged]);
+  const { logout, isLogged } = useUser()
 
   function userBarButton() {
-    const logout = () => {
-      Cookies.remove("jwt2");
-      setLogged(false)
-    };
-
-    if (logged === false) {
-      return (
-        <Button variant="success" href="/login">
-        Login
-      </Button>
-      );
-    } else {
+    if (isLogged) {
       return (
         <Button variant="warning" onClick={() => logout()}>
           <FontAwesomeIcon icon={faSignInAlt} /> Logout
+        </Button>
+      );
+    } else if (!isLogged) {
+      return (
+        <Button variant="success" href="/login">
+          Login
         </Button>
       );
     }
@@ -49,7 +37,7 @@ export default function NavbarComponent() {
               className="brand-name"
               title="Jobs"
               id="basic-nav-dropdown"
-              hidden={!logged}
+              hidden={!isLogged}
             >
               <NavDropdown.Item href="/jobs/add">
                 Agregar trabajo

@@ -140,6 +140,7 @@ export default function PostJobsComponent() {
                 });
               }
             }}
+            className="btn-block mt-3"
             variant="secondary"
             size="lg"
             type="submit"

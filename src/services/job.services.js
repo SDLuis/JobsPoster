@@ -42,7 +42,7 @@ export const findJobs = async (Job_ID) => {
     });
 };
 
-export const ownJobs = async (Job_ID) => {
+export const ownJobs = async () => {
   return await axios
     .get(`${process.env.REACT_APP_API_URL}/jobs/owner`, { withCredentials: true })
     .then((response) => {

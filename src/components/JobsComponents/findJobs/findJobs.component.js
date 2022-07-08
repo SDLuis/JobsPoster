@@ -24,7 +24,7 @@ export default function FindJobs() {
     return (
       <Card className="Jobs">
         <Card.Header className="Header">
-        <a className="iconBack" href={`/category/${job.row.workType}`} rel="noreferrer">
+        <a className="iconBack" href={"/"} rel="noreferrer">
           <img
             src={iconBack}
             alt="example"
