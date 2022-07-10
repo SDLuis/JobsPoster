@@ -1,15 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams } from "react-router-dom";
+
 import "../jobList/jobList.css";
 import { Card, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { getWorksCategory } from "../../../services/job.services";
+
+import Pagination from "../../paginateComponent/paginate.component";
 import LoadingSpinner from "../../loading/loading.component";
+
+import { getWorksCategory } from "../../../services/job.services";
 
 export default function JobsList() {
   const params = useParams();
   const Category = params.category;
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  let PageSize = 10;
+  console.log(PageSize)
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return jobs.slice(firstPageIndex, lastPageIndex);
+  }, [PageSize, currentPage, jobs]);
 
   useEffect(() => {
     setLoading(true);
@@ -43,10 +56,19 @@ export default function JobsList() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="Col">
-      {jobs.map((row) => {
+    <div className="mt-auto">
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={jobs.length}
+        pageSize={PageSize}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
+      <div className="Col">
+      {currentTableData.map((row) => {
         return <JobsCategory key={row.Job_ID} row={row} />;
-      })}{" "}
+      })}
+      </div>
     </div>
   );
 }

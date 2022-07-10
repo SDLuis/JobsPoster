@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavbarComponent from "./components/NavbarComponents/navbar.component";
 
 import { AuthProvider } from "./context/authContext";
-import PrivateRoute from "./components/AuthComponents/privateRoutes/privateRoutes";
+import { JobProvider } from "./context/jobContext";
+
+import PrivateRoute from "./hooks/privateRoutes";
 
 import LoginComponent from "./components/AuthComponents/login/login.component";
 import RegisterComponent from "./components/AuthComponents/register/register.component";
@@ -18,6 +20,7 @@ import OwnJobsComponent from "./components/JobsComponents/ownJobs/ownJobs.compon
 function App() {
   return (
     <AuthProvider>
+      <JobProvider>
       <div>
         <section>
           <NavbarComponent />
@@ -54,6 +57,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      </JobProvider>
     </AuthProvider>
   );
 }

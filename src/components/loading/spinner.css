@@ -7,7 +7,6 @@
     }
   }
   .loading-spinner {
-    left: 50%;
     width: 300px;
     height: 300px;
     border: 10px solid #f3f3f3; /* Light grey */

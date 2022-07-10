@@ -1,6 +1,7 @@
 .Col{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+  margin-bottom: 20px;
 }
 .Job {
   margin-top: 2%;
@@ -9,7 +10,7 @@
   opacity: 0.9;
 }
 .titulo {
-  background-color: #474e4d;
+  background-color: #242727;
   font-size: 16px;
   font-style: oblique;
   color: aliceblue;

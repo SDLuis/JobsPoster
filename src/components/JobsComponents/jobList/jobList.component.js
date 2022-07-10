@@ -1,14 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+
+import { getWorks } from "../../../services/job.services";
+
+import LoadingSpinner from "../../loading/loading.component";
+import Pagination from "../../paginateComponent/paginate.component";
+
 import "./jobList.css";
 import { faBriefcase, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Button } from "react-bootstrap";
-import { getWorks } from "../../../services/job.services";
-import LoadingSpinner from "../../loading/loading.component";
 
 export default function JobsList() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  let PageSize = 10;
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return jobs.slice(firstPageIndex, lastPageIndex);
+  }, [PageSize, currentPage, jobs]);
+
+  console.log(currentPage)
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +46,7 @@ export default function JobsList() {
           <Card.Text className="cortar">{job.row.description}</Card.Text>
           <Button
             className="VerMas"
-            variant="outline-secondary"
+            variant="outline-dark"
             size="sm"
             href={`/Jobs/${job.row.Job_ID}/Details`}
           >
@@ -44,10 +58,19 @@ export default function JobsList() {
   }
   if (loading) return <LoadingSpinner />;
   return (
-    <div className="Col">
-      {jobs.map((row) => {
+    <div>
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={jobs.length}
+        pageSize={PageSize}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
+      <div className="Col">
+      {currentTableData.map((row) => {
         return <JobsCategory key={row.Job_ID} row={row} />;
       })}
+      </div>
     </div>
   );
 }
