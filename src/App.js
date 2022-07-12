@@ -16,6 +16,7 @@ import JobsCategoryComponent from "./components/JobsComponents/jobCategory/jobCa
 import PostJobsComponent from "./components/JobsComponents/postJob/postJob.component";
 import FindJobsComponent from "./components/JobsComponents/findJobs/findJobs.component";
 import OwnJobsComponent from "./components/JobsComponents/ownJobs/ownJobs.component";
+import EditJobsComponent from "./components/JobsComponents/editJob/editJobs.component";
 
 function App() {
   return (
@@ -47,6 +48,10 @@ function App() {
             <Route
               path="/jobs/:Job_ID/Details"
               element={<FindJobsComponent />}
+            />
+            <Route
+              path="/jobs/:Job_ID/edit"
+              element={<EditJobsComponent />}
             />
             <Route
               path="/category/:category"

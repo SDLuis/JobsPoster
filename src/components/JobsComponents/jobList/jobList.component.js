@@ -22,8 +22,6 @@ export default function JobsList() {
     return jobs.slice(firstPageIndex, lastPageIndex);
   }, [PageSize, currentPage, jobs]);
 
-  console.log(currentPage)
-
   useEffect(() => {
     setLoading(true);
     getWorks().then((response) => {
