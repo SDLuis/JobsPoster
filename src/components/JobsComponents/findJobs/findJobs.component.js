@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./findJobs.css";
-import { Card } from "react-bootstrap";
-import { findJobs } from "../../../services/job.services";
+import { Button, Card } from "react-bootstrap";
+import { findJobs } from "../../../services/job.service";
 import LoadingSpinner from "../../loading/loading.component";
 import { useParams } from "react-router-dom";
 import iconBack from '../../../img/icons8-back-48.png'
@@ -22,7 +22,8 @@ export default function FindJobs() {
 
   function JobsById(job) {
     return (
-      <Card className="Jobs">
+      <div className="FindJobs">
+      <Card className="Card-FindJobs">
         <Card.Header className="Header">
         <a className="iconBack" href={"/"} rel="noreferrer">
           <img
@@ -36,11 +37,16 @@ export default function FindJobs() {
           <Card.Text>{job.row.workType}</Card.Text>
           <Card.Text>{job.row.Position}</Card.Text>
           <Card.Text>{job.row.apply_Method}</Card.Text>
+          <Card.Text>{job.row.description}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <div>{job.row.description}</div>
+          <Button 
+          className="btn btn-block"
+          variant="outline-dark"
+          >Postularse</Button>
         </Card.Footer>
       </Card>
+      </div>
     );
   }
   if (loading) return <LoadingSpinner />;

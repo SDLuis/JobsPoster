@@ -2,87 +2,87 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import imgLogin from "../../../img/Login2.jpg";
-import useUser from "../../../hooks/useUser"
+import useUser from "../../../hooks/useUser";
 
 function LoginComponent() {
   let navigate = useNavigate();
   const [password, setPassword] = useState("");
-  const [userEmail, setUserEmail] = useState("");
- // const [LoginStatus, setLoginStatus] = useState("");
-  const { login, isLogged } = useUser()
-  
+  const [useremail, setUseremail] = useState("");
+  // const [LoginStatus, setLoginStatus] = useState("");
+  const { login, isLogged, failLogin } = useUser();
+
   useEffect(() => {
     if (isLogged) {
       return navigate("/jobs/owner");
     }
   }, [isLogged, navigate]);
 
-  function Login(){
-    return login({userEmail, password})
+  function Login() {
+    return login({ useremail, password });
+  }
+  function checkFilledFields() {
+    if (useremail === "" || password === "") {
+      return false;
+    } else {
+      return true;
+    }
   }
   return (
-    <div className="Body">
-      <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
-        <div className="container">
-          <div className="card login-card ">
-            <div className="row no-gutters">
-              <Form.Group className="col-md-5">
-                <img src={imgLogin} alt="login" className="login-card-img" />
-              </Form.Group>
-              <Form.Group className="col-md-7">
-                <Form.Group className="card-body">
-                  <Form.Group>
-                      <h1>JOBS POSTER</h1>
-                    <p className="login-card-description">Sign into your account</p>
-                  </Form.Group>
-                  <Form className="form">
-                    <Form.Group controlId="formaBasicPassword">
-                      <Form.Control
-                        className="form-group input"
-                        name="User_Email"
-                        type="email"
-                        placeholder="enter email"
-                        onChange={(e) => {
-                          setUserEmail(e.target.value);
-                        }}
-                      />
-                    </Form.Group>
-                    <Form.Group>
-                      <Form.Control
-                        className="form-group mb-4 input"
-                        name="User_Password"
-                        type="password"
-                        placeholder="password"
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                        }}
-                      />
-                    </Form.Group>
-                    <Form.Group>
-                      <Button
-                        className="btn btn-block login-btn mb-4"
-                        type="submit"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          Login();
-                        }}
-                      >
-                        Login
-                      </Button>
-                    </Form.Group>
-                    <p className="login-card-footer-text">
-                      Don't have an account?{" "}
-                      <a href="/register" className="text-reset">
-                        Register here
-                      </a>
-                    </p>
-                  </Form>
-                </Form.Group>
-              </Form.Group>
-            </div>
-          </div>
-        </div>
+    <div className="Login">
+      <main>
+        <Form className="formulario">
+          <Form.Group>
+            <center>
+              <h2>Welcome to Jobs Poster</h2>
+            </center>
+          </Form.Group>
+          <Form.Group controlId="formaBasicPassword">
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control
+              name="User_Email"
+              type="email"
+              onChange={(e) => {
+                setUseremail(e.target.value);
+              }}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              name="User_Password"
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Button
+              className="Button btn-block mt-3 mb-1"
+              variant="success"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                if (checkFilledFields() === true) {
+                  Login();
+                } else {
+                  failLogin();
+                }
+              }}
+            >
+              Log In
+            </Button>
+          </Form.Group>
+          <Form.Group>
+            <p className="login-card-footer-text">
+              Don't have an account?{" "}
+              <a href="/register" className="text-reset">
+                Register here
+              </a>
+            </p>
+          </Form.Group>
+        </Form>
       </main>
     </div>
   );

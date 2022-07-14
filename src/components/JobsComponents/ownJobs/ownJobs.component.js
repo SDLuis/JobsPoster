@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./ownJobs.css";
 
-import { ownJobs } from "../../../services/job.services";
+import { ownJobs } from "../../../services/job.service";
 import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";
 import renderJobs from "../../../hooks/useOwnJobs";

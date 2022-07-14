@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { deleteJobs } from "../services/job.services";
+import { deleteJobs } from "../services/job.service";
 
 import jobContext from "../context/jobContext";
 

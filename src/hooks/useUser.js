@@ -1,32 +1,65 @@
 import { useContext, useCallback } from "react";
-import axios from "axios";
 import Cookies from "js-cookie";
 import authContext from "../context/authContext";
+import { Login } from "../services/user.service"
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function useUser() {
   const { jwt, setJWT } = useContext(authContext);
 
   const login = useCallback(
-    ({ userEmail, password }) => {
-      axios
-        .post(
-          `${process.env.REACT_APP_API_URL}/auth/login`,
-          {
-            email: userEmail,
-            password: password,
-          },
-          { withCredentials: true }
-        )
-        .then((response) => {
-          if (response.data.message) {
+    ({ useremail, password }) => {
+      return Login(useremail, password)
+        .then((res) => {
+          if (res.message) {
+            MySwal.fire({
+              title: "Error al validar los datos",
+              text: res.message,
+              icon: "error",
+              confirmButtonText: "OKE",
+              allowEnterKey: true,
+              allowEscapeKey: true,
+              allowOutsideClick: true,
+              timer: 3000,
+              timerProgressBar: true,
+            });
           } else {
-            setJWT(response.data.data);
-            Cookies.set("jwt", `${response.data.data}`, { expires: 7 });
+            setJWT(res.data);
+            Cookies.set("jwt", `${res.data}`, { expires: 7 });
           }
+        })
+        .catch((err) => {
+          console.log(err)
+          MySwal.fire({
+            title: "No se pudo Logear, intente mas tarde",
+            icon: "error",
+            confirmButtonText: true,
+            allowEnterKey: true,
+            allowEscapeKey: true,
+            allowOutsideClick: true,
+            timer: 2000,
+            timerProgressBar: true,
+          });
         });
     },
     [setJWT]
   );
+  const failLogin = () => {
+    MySwal.fire({
+      title: "Error al validar los datos",
+      text: "Rellene todos los campos",
+      icon: "error",
+      confirmButtonText: "OKE",
+      allowEnterKey: true,
+      allowEscapeKey: true,
+      allowOutsideClick: true,
+      timer: 3000,
+      timerProgressBar: true,
+    });
+  }
   const logout = useCallback(() => {
     Cookies.remove("jwt");
     setJWT(null)
@@ -36,5 +69,6 @@ export default function useUser() {
     isLogged: Boolean(jwt),
     login,
     logout,
+    failLogin
   };
 }

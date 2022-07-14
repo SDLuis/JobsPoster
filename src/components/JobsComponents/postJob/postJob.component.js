@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import * as jobService from "../../../services/job.services";
+import * as jobService from "../../../services/job.service";
 import "./postJob.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";

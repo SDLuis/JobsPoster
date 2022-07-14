@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 
-import { getWorks } from "../../../services/job.services";
+import { getWorks } from "../../../services/job.service";
 
 import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";

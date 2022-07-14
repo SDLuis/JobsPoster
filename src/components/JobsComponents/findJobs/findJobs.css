@@ -1,7 +1,10 @@
-.Jobs{
-    margin-top: 40%;
-    margin-left: auto;
-    margin-right: auto;
+.FindJobs{
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+.Card-FindJobs{
     width:70%;
     opacity: 0.9;
 }
@@ -28,24 +31,4 @@
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-
-@media (max-width: 500px) {
-  .Jobs{
-    margin-top: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    width:70%;
-    opacity: 0.9;
-}
-}
-@media (min-width: 750px) {
-  .Jobs{
-    margin-top: 20%;
-    margin-left: auto;
-    margin-right: auto;
-    width:70%;
-    opacity: 0.9;
-}
 }

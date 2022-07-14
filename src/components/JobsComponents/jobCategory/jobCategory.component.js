@@ -7,7 +7,7 @@ import { Card, Button } from "react-bootstrap";
 import Pagination from "../../paginateComponent/paginate.component";
 import LoadingSpinner from "../../loading/loading.component";
 
-import { getWorksCategory } from "../../../services/job.services";
+import { getWorksCategory } from "../../../services/job.service";
 
 export default function JobsList() {
   const params = useParams();

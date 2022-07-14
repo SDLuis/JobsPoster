@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import * as jobService from "../../../services/job.services";
+import * as jobService from "../../../services/job.service";
 import editJob from "../../../hooks/useEditJobs";
 import "./editJob.css";
 
