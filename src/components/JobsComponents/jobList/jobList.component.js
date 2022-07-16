@@ -4,6 +4,7 @@ import { getWorks } from "../../../services/job.service";
 
 import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";
+import Searchajobs from "../searchJobs/searchajobs.component";
 
 import "./jobList.css";
 import { faBriefcase, faClock } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +15,7 @@ export default function JobsList() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  
   let PageSize = 10;
 
   const currentTableData = useMemo(() => {
@@ -57,6 +59,14 @@ export default function JobsList() {
   if (loading) return <LoadingSpinner />;
   return (
     <div>
+      <div>
+        <Searchajobs />
+      </div>
+      <div className="Col">
+      {currentTableData.map((row) => {
+        return <JobsCategory key={row.Job_ID} row={row} />;
+      })}
+      </div>
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
@@ -64,11 +74,6 @@ export default function JobsList() {
         pageSize={PageSize}
         onPageChange={(page) => setCurrentPage(page)}
       />
-      <div className="Col">
-      {currentTableData.map((row) => {
-        return <JobsCategory key={row.Job_ID} row={row} />;
-      })}
-      </div>
     </div>
   );
 }

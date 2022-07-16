@@ -12,11 +12,12 @@ import { getWorksCategory } from "../../../services/job.service";
 export default function JobsList() {
   const params = useParams();
   const Category = params.category;
+
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   let PageSize = 10;
-  console.log(PageSize)
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;

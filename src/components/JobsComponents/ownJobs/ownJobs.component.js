@@ -7,7 +7,7 @@ import "./ownJobs.css";
 import { ownJobs } from "../../../services/job.service";
 import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";
-import renderJobs from "../../../hooks/useOwnJobs";
+import RenderJobs from "../../../hooks/useOwnJobs";
 
 import jobContext from "../../../context/jobContext";
 
@@ -40,13 +40,6 @@ export default function OwnJobs() {
   if (loading) return <LoadingSpinner />;
   return (
     <div>
-      <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={jobs.length}
-        pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
-      />
     <div className="List">
       <Table size="sm" variant="dark" striped hover>
         <thead>
@@ -59,9 +52,16 @@ export default function OwnJobs() {
             <td>Opciones</td>
           </tr>
         </thead>
-        <tbody>{renderJobs(currentTableData)}</tbody>
+        <tbody>{RenderJobs(currentTableData)}</tbody>
       </Table>
     </div>
+    <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={jobs.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
     </div>
   );
 }

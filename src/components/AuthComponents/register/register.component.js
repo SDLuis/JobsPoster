@@ -105,7 +105,7 @@ export default function RegistryComponent() {
           </Form.Group>
           <Form.Group>
             <p className="login-card-footer-text">
-              Have an account?{" "}
+              Already have an account?{" "}
               <a href="/login" className="text-reset">
                 Login here
               </a>
