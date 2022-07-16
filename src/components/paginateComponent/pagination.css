@@ -1,4 +1,5 @@
 .pagination-container {
+  margin-top: 100px;
   display: flex;
   list-style-type: none;
   justify-content: center;

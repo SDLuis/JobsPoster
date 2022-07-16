@@ -1,10 +1,24 @@
 import { Button, Form, FormControl, Row, Col } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 import "./searchJob.css";
 
 export default function Searchajobs() {
+
+  let navigate = useNavigate();
+
+  function onSubmit (keyword) {
+    if (keyword !== '') {
+      return navigate(`/worktype/${keyword}/`)
+    }
+  }
+  function handleSelect (e, param) {
+    e.preventDefault()
+    onSubmit(param)
+  }
+
   return (
     <div className="search">
       <Row>
@@ -13,7 +27,7 @@ export default function Searchajobs() {
             <FormControl
               className="BarSearch"
               type="text"
-              placeholder="  Type Category"
+              placeholder="  Type a Category"
             />
             <Button
               className="btnSearch"
@@ -24,13 +38,25 @@ export default function Searchajobs() {
           </Form>
         </Col>
         <Col>
-          <div className="categoria">
+          <div className="WorkType">
             <select
-              name="Categoria"
-              className="BarCategory form-control"
+              name="WorkType"
+              className="BarWorkType form-control"
+              onChange={(e) => {
+                handleSelect(e, e.target.value)
+              }}
             >
+                <option disabled>
+                    Select Work Type
+                </option>
                 <option>
-                    Select Category
+                    Full Time
+                </option>
+                <option>
+                    Part Time
+                </option>
+                <option>
+                    Remote
                 </option>
             </select>
           </div>

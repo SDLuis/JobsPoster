@@ -11,7 +11,7 @@ import { getWorksCategory } from "../../../services/job.service";
 
 export default function JobsList() {
   const params = useParams();
-  const Category = params.category;
+  const Category = params.worktype;
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ export default function JobsList() {
     });
   }, [Category]);
 
-  function JobsCategory(job) {
+  function JobsWorkType(job) {
     return (
       <Card className="Job position-relative mb-3 bg-body rounded">
         <Card.Header className="titulo">{job.row.work_Title}</Card.Header>
@@ -67,7 +67,7 @@ export default function JobsList() {
       />
       <div className="Col">
       {currentTableData.map((row) => {
-        return <JobsCategory key={row.Job_ID} row={row} />;
+        return <JobsWorkType key={row.Job_ID} row={row} />;
       })}
       </div>
     </div>

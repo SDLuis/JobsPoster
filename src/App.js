@@ -54,7 +54,7 @@ function App() {
               element={<EditJobsComponent />}
             />
             <Route
-              path="/category/:category"
+              path="/worktype/:worktype"
               element={<JobsCategoryComponent />}
             />
             <Route path="/login" element={<LoginComponent />} />
