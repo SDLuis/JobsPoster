@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./findJobs.css";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { findJobs } from "../../../services/job.service";
 import LoadingSpinner from "../../loading/loading.component";
 import { useParams } from "react-router-dom";
 import iconBack from '../../../img/icons8-back-48.png'
+import { Link } from "react-router-dom";
 
 export default function FindJobs() {
   const [jobs, setJobs] = useState([]);
@@ -40,10 +41,11 @@ export default function FindJobs() {
           <Card.Text>{job.row.description}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button 
+          <Link
+          to={`/jobs/${job.row.Job_ID}/postulate`}
           className="btn btn-block"
           variant="outline-dark"
-          >Postularse</Button>
+          >Postularse</Link>
         </Card.Footer>
       </Card>
       </div>

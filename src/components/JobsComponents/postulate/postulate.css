@@ -1,0 +1,31 @@
+.FormPostulate{
+    width: 50%;
+    margin-top:10%;
+    margin-left: auto;
+    margin-bottom: 2%;
+    margin-right: auto;
+    padding:2% 2% 2% 2% ;
+    opacity: 0.9;
+  color: aliceblue;
+  background-color:#474E4D;
+  border-radius: 5px 5px;
+}
+
+
+@media (max-width: 750px) {
+    .FormPostulate {
+      width: 90%;
+      margin-top: 20%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (max-width: 550px) {
+    .FormPostulate {
+      width: 90%;
+      margin-top: 35%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  

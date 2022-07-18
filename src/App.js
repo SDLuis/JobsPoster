@@ -18,6 +18,7 @@ import PostJobsComponent from "./components/JobsComponents/postJob/postJob.compo
 import FindJobsComponent from "./components/JobsComponents/findJobs/findJobs.component";
 import OwnJobsComponent from "./components/JobsComponents/ownJobs/ownJobs.component";
 import EditJobsComponent from "./components/JobsComponents/editJob/editJobs.component";
+import PostulateComponent from "./components/JobsComponents/postulate/postulate.component";
 
 function App() {
   return (
@@ -54,6 +55,8 @@ function App() {
               path="/jobs/:Job_ID/edit"
               element={<EditJobsComponent />}
             />
+            <Route path="/jobs/:Job_ID/postulate" element={<PostulateComponent />} />
+
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/register" element={<RegisterComponent />} />
             <Route path="/:rest*" element={<NotFoundComponent/ >} />
