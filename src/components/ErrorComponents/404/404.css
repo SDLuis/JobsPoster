@@ -7,12 +7,16 @@
 
 .error404 {
   margin-top: 8%;
+  width: 40%;
   display: grid;
   place-items: center;
 }
+.error404 a{
+  font-size: 35px;
+}
 .cont-404 {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 }
 
 @media (max-width: 700px) {
@@ -21,6 +25,16 @@
         margin-top: 16%;
         display: grid;
         place-items: center;
+      }
+      .code-error {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .msg-error {
+        font-size: 15px;
+      }
+      .error404 a{
+        font-size: 20px;
       }
 }
 .img-error{

@@ -1,0 +1,54 @@
+.code-errorNF {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .msg-errorNF {
+    font-size: 25px;
+  }
+  
+  .errorNotFound {
+    margin-top: 2%;
+    width: 40%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  .cont-NotFound {
+    display: grid;
+    place-items: center;
+  }
+  
+  @media (max-width: 700px) {
+      .errorNotFound {
+          margin-top: 10%;
+          display: grid;
+          place-items: center;
+        }
+        .code-errorNF {
+          font-size: 30px;
+          font-weight: normal;
+        }
+        .msg-errorNF {
+          font-size: 15px;
+        }
+        
+  }
+  @media (max-width: 1388px) {
+    .errorNotFound {
+        width: 65%;
+        display: grid;
+        place-items: center;
+      }
+    }
+    @media (max-width: 795px) {
+      .errorNotFound {
+          width: 75%;
+          display: grid;
+          place-items: center;
+        }
+      }
+  .img-error{
+    width: 90%;
+  }
+  

@@ -7,6 +7,7 @@ import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";
 import Searchajobs from "../searchJobs/searchajobs.component";
 import JobsListComponent  from "../listOfJobs/listOfJobs.component";
+import NotJobsFoundComponent from "../../ErrorComponents/NotJobsFound/NotJobsFound.component";
 
 import "./jobList.css";
 
@@ -31,12 +32,13 @@ export default function JobsList() {
     });
   }, [changeJobs]);
 
-  if (loading) return <LoadingSpinner />;
   return (
     <div>
       <div>
         <Searchajobs />
       </div>
+      { loading ? <LoadingSpinner /> : null}
+      { jobs.length === 0 && !loading ? <NotJobsFoundComponent/> : null }
       <div className="Col">
       {currentTableData.map((row) => {
         return <JobsListComponent key={row.Job_ID} row={row} />;

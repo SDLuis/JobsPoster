@@ -18,4 +18,5 @@
     display: grid;
     height: 100vh;
     place-items: center;
+    margin-top: -150px;
   }

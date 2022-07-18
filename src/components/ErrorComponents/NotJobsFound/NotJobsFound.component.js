@@ -1,8 +1,7 @@
-import "./404.css";
-import { Link } from "react-router-dom";
+import "./NotJobsFound.css";
 import { Form } from "react-bootstrap";
 
-export default function NotFoundComponent() {
+export default function NotJobsFoundComponent() {
   const gifsErrors = [
     "d2jjuAZzDSVLZ5kI",
     "hv5AEBpH3ZyNoRnABG",
@@ -16,16 +15,13 @@ export default function NotFoundComponent() {
   };
 
   return (
-    <div className="cont-404">
-      <div className="error404">
-        <Form.Label className="code-error">404</Form.Label>
-        <Form.Label className="msg-error">
-          Sometimes gettings lost isn't that bad.
+    <div className="cont-NotFound">
+      <div className="errorNotFound">
+        <Form.Label className="code-errorNF">Not jobs found</Form.Label>
+        <Form.Label className="msg-errorNF">
+          There are no jobs with this data, try to another.
         </Form.Label>
         <img className="img-error" src={randomImage()} alt="alt-page-404" />
-        <Link to="/" class="btn">
-          Go to home
-        </Link>
       </div>
     </div>
   );

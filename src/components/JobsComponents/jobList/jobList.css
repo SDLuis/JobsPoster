@@ -45,3 +45,11 @@
     margin-bottom: 20px;
   }
 }
+
+.NoWord {
+  color: #ecd115;
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}

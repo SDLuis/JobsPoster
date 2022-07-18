@@ -46,8 +46,8 @@ export default function EditJobsComponent() {
   }
 
   return (
-    <div>
-      <Form className="Post">
+      <div className="Post">
+      <Form>
         <Form.Group>
           <Form.Label>Work Title</Form.Label>
           <Form.Control
@@ -124,10 +124,10 @@ export default function EditJobsComponent() {
             size="lg"
             type="submit"
           >
-            Publicar
+            Editar
           </Button>
         </Form.Group>
       </Form>
-    </div>
+      </div>
   );
 }

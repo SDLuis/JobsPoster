@@ -1,4 +1,4 @@
-.Post2 {
+.Post {
   padding: 2% 2% 2% 2%;
   opacity: 0.95;
   color: aliceblue;
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 750px) {
-  .Post2 {
+  .Post {
     width: 90%;
     margin-top: 14%;
     margin-left: auto;
@@ -18,7 +18,7 @@
   }
 }
 @media (max-width: 550px) {
-  .Post2 {
+  .Post {
     width: 90%;
     margin-top: 35%;
     margin-left: auto;

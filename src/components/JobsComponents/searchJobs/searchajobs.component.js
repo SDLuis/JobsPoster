@@ -6,7 +6,7 @@ import "./searchJob.css";
 import { useContext, useState } from "react";
 import jobContext from "../../../context/jobContext";
 
-import { getWorksByCategory, getWorksByWorkTitle } from "../../../services/job.service";
+import { getWorksByCategory, getWorksByWorkTitle, getWorks } from "../../../services/job.service";
 
 export default function Searchajobs() {
   const { changeJobs, setCurrentPage } = useContext(jobContext);
@@ -23,6 +23,9 @@ export default function Searchajobs() {
     e.preventDefault()
     if (param !== "") {
       getWorksByWorkTitle(param).then((jobs) => changeJobs(jobs));
+      setCurrentPage(1)
+    }else{
+      getWorks().then((jobs) => changeJobs(jobs))
       setCurrentPage(1)
     }
   }
