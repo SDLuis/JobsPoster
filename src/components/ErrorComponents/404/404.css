@@ -18,8 +18,11 @@
 @media (max-width: 700px) {
     .error404 {
         width: 100%;
-        margin-top: 18%;
+        margin-top: 16%;
         display: grid;
         place-items: center;
       }
+}
+.img-error{
+  width: 90%;
 }
