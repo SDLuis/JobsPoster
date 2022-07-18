@@ -12,9 +12,8 @@ import NotJobsFoundComponent from "../../ErrorComponents/NotJobsFound/NotJobsFou
 import "./jobList.css";
 
 export default function JobsList() {
-  const { jobs, changeJobs } = useContext(jobContext)
-  const [loading, setLoading] = useState(false);
-  const { currentPage, setCurrentPage } = useContext(jobContext)
+  const { jobs, changeJobs, currentPage, setCurrentPage } = useContext(jobContext)
+  const [loading, setLoading] = useState(true);
   
   let PageSize = 10;
 
@@ -25,7 +24,6 @@ export default function JobsList() {
   }, [PageSize, currentPage, jobs]);
 
   useEffect(() => {
-    setLoading(true);
     getWorks().then((response) => {
       changeJobs(response);
       setLoading(false);
@@ -38,7 +36,7 @@ export default function JobsList() {
         <Searchajobs />
       </div>
       { loading ? <LoadingSpinner /> : null}
-      { jobs.length === 0 && !loading ? <NotJobsFoundComponent/> : null }
+      { jobs.length === 0 && !loading ? <NotJobsFoundComponent message={'There are no jobs with this data, try to another.'}/> : null }
       <div className="Col">
       {currentTableData.map((row) => {
         return <JobsListComponent key={row.Job_ID} row={row} />;

@@ -22,7 +22,7 @@
 @media (max-width: 700px) {
     .error404 {
         width: 100%;
-        margin-top: 16%;
+        margin-top: 18%;
         display: grid;
         place-items: center;
       }
@@ -36,6 +36,11 @@
       .error404 a{
         font-size: 20px;
       }
+}
+@media (max-width: 500px) {
+  .error404 {
+      margin-top: 30%;
+    }
 }
 .img-error{
   width: 90%;

@@ -5,16 +5,17 @@ import { Table } from "react-bootstrap";
 import "./ownJobs.css";
 
 import { ownJobs } from "../../../services/job.service";
-import LoadingSpinner from "../../loading/loading.component";
+import jobContext from "../../../context/jobContext";
+
+import LoadingSpinner from "../../loading/loadingTable.component";
 import Pagination from "../../paginateComponent/paginate.component";
 import RenderJobs from "../../../hooks/useOwnJobs";
-
-import jobContext from "../../../context/jobContext";
+import NotJobsFoundComponent from "../../ErrorComponents/NotJobsFound/NotJobsFound.component";
 
 export default function OwnJobs() {
   let navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { deleted, setDeleted } = useContext(jobContext)
   const [currentPage, setCurrentPage] = useState(1);
   let PageSize = 8;
@@ -26,7 +27,6 @@ export default function OwnJobs() {
   }, [PageSize, currentPage, jobs]);
 
   useEffect(() => {
-    setDeleted(false);
     setLoading(true);
     ownJobs().then((response) => {
       setJobs(response);
@@ -38,6 +38,7 @@ export default function OwnJobs() {
   }, [deleted, navigate, setDeleted]);
 
   if (loading) return <LoadingSpinner />;
+  if(jobs.length === 0 && !loading) return <div className="List"><NotJobsFoundComponent message={'You dont have any job yet'} redMessage={'Add jobs'} /></div>
   return (
     <div className="ownJobs">
     <div className="List">

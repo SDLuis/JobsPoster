@@ -38,7 +38,7 @@ export default function Searchajobs() {
             <FormControl
               className="BarSearch"
               type="text"
-              placeholder="  Type a work title"
+              placeholder=" Type a job title"
               onChange={(e) => setsearchParam(e.target.value)}
             />
             <Button className="btnSearch" variant="outline-secondary" type='submit'>
@@ -55,7 +55,7 @@ export default function Searchajobs() {
                 handleSelect(e.target.value);
               }}
             >
-              <option value={""}>Select Work Type</option>
+              <option value={""}>Working hours</option>
               <option>Full Time</option>
               <option>Part Time</option>
               <option>Remote</option>

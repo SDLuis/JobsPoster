@@ -1,7 +1,8 @@
 import "./NotJobsFound.css";
 import { Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function NotJobsFoundComponent() {
+export default function NotJobsFoundComponent({message, redMessage}) {
   const gifsErrors = [
     "d2jjuAZzDSVLZ5kI",
     "hv5AEBpH3ZyNoRnABG",
@@ -19,9 +20,10 @@ export default function NotJobsFoundComponent() {
       <div className="errorNotFound">
         <Form.Label className="code-errorNF">Not jobs found</Form.Label>
         <Form.Label className="msg-errorNF">
-          There are no jobs with this data, try to another.
+          {message}
         </Form.Label>
         <img className="img-error" src={randomImage()} alt="alt-page-404" />
+        <Link to={'/jobs/add'} className="btn fs-4" hidden={!redMessage}>{redMessage}</Link> 
       </div>
     </div>
   );
