@@ -1,0 +1,25 @@
+.code-error {
+  font-size: 60px;
+}
+.msg-error {
+  font-size: 20px;
+}
+
+.error404 {
+  margin-top: 8%;
+  display: grid;
+  place-items: center;
+}
+.cont-404 {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .error404 {
+        width: 100%;
+        margin-top: 18%;
+        display: grid;
+        place-items: center;
+      }
+}

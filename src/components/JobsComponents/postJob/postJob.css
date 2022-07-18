@@ -1,12 +1,29 @@
-.Post {
+.Post2 {
   padding: 2% 2% 2% 2%;
   opacity: 0.95;
   color: aliceblue;
   background-color: #474e4d;
+  width: 80%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.postJobs {
-  display: grid;
-  height: 80vh;
-  place-items: center;
+
+@media (max-width: 750px) {
+  .Post2 {
+    width: 90%;
+    margin-top: 14%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+@media (max-width: 550px) {
+  .Post2 {
+    width: 90%;
+    margin-top: 35%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 

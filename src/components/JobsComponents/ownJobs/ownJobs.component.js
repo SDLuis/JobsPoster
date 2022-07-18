@@ -17,7 +17,7 @@ export default function OwnJobs() {
   const [loading, setLoading] = useState(false);
   const { deleted, setDeleted } = useContext(jobContext)
   const [currentPage, setCurrentPage] = useState(1);
-  let PageSize = 10;
+  let PageSize = 8;
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -39,7 +39,7 @@ export default function OwnJobs() {
 
   if (loading) return <LoadingSpinner />;
   return (
-    <div>
+    <div className="ownJobs">
     <div className="List">
       <Table size="sm" variant="dark" striped hover>
         <thead>
