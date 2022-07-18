@@ -8,9 +8,17 @@ export const getWorks = async () => {
     });
 };
 
-export const getWorksCategory = async (category) => {
+export const getWorksByCategory = async (category) => {
   return await axios
     .get(`${process.env.REACT_APP_API_URL}/jobs/${category}/list`)
+    .then((response) => {
+      return response.data;
+    });
+};
+
+export const getWorksByWorkTitle = async (workTitle) => {
+  return await axios
+    .get(`${process.env.REACT_APP_API_URL}/jobs/workTitle/${workTitle}`)
     .then((response) => {
       return response.data;
     });

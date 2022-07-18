@@ -30,7 +30,7 @@ export default function PostJobsComponent() {
     }
   }
   return (
-    <div>
+    <div className="postJobs">
       <Form className="Post">
         <Form.Group>
           <Form.Label>Work Title</Form.Label>

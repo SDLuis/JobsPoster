@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 
 import { getWorks } from "../../../services/job.service";
+import jobContext from "../../../context/jobContext";
 
 import LoadingSpinner from "../../loading/loading.component";
 import Pagination from "../../paginateComponent/paginate.component";
@@ -10,9 +11,9 @@ import JobsListComponent  from "../listOfJobs/listOfJobs.component";
 import "./jobList.css";
 
 export default function JobsList() {
-  const [jobs, setJobs] = useState([]);
+  const { jobs, changeJobs } = useContext(jobContext)
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const { currentPage, setCurrentPage } = useContext(jobContext)
   
   let PageSize = 10;
 
@@ -25,10 +26,10 @@ export default function JobsList() {
   useEffect(() => {
     setLoading(true);
     getWorks().then((response) => {
-      setJobs(response);
+      changeJobs(response);
       setLoading(false);
     });
-  }, []);
+  }, [changeJobs]);
 
   if (loading) return <LoadingSpinner />;
   return (

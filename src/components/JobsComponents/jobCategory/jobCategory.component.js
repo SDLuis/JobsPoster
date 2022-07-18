@@ -7,7 +7,7 @@ import { Card, Button } from "react-bootstrap";
 import Pagination from "../../paginateComponent/paginate.component";
 import LoadingSpinner from "../../loading/loading.component";
 
-import { getWorksCategory } from "../../../services/job.service";
+import { getWorksByCategory } from "../../../services/job.service";
 
 export default function JobsList() {
   const params = useParams();
@@ -27,7 +27,7 @@ export default function JobsList() {
 
   useEffect(() => {
     setLoading(true);
-    getWorksCategory(Category).then((response) => {
+    getWorksByCategory(Category).then((response) => {
       setJobs(response);
       setLoading(false);
     });

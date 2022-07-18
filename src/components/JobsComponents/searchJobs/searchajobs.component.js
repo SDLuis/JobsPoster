@@ -1,38 +1,44 @@
 import { Button, Form, FormControl, Row, Col } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
-
 import "./searchJob.css";
 
+import { useContext, useState } from "react";
+import jobContext from "../../../context/jobContext";
+
+import { getWorksByCategory, getWorksByWorkTitle } from "../../../services/job.service";
+
 export default function Searchajobs() {
+  const { changeJobs, setCurrentPage } = useContext(jobContext);
+  const [searchParam, setsearchParam] = useState('')
 
-  let navigate = useNavigate();
-
-  function onSubmit (keyword) {
-    if (keyword !== '') {
-      return navigate(`/worktype/${keyword}/`)
+  function handleSelect(keyword) {
+    if (keyword !== "") {
+      getWorksByCategory(keyword).then((jobs) => changeJobs(jobs));
+      setCurrentPage(1)
     }
   }
-  function handleSelect (e, param) {
+
+  function search(e, param){
     e.preventDefault()
-    onSubmit(param)
+    if (param !== "") {
+      getWorksByWorkTitle(param).then((jobs) => changeJobs(jobs));
+      setCurrentPage(1)
+    }
   }
 
   return (
     <div className="search">
       <Row>
         <Col>
-          <Form className="Busqueda input-group">
+          <Form className="Busqueda input-group" onSubmit={(e) => search(e, searchParam)}>
             <FormControl
               className="BarSearch"
               type="text"
-              placeholder="  Type a Category"
+              placeholder="  Type a work title"
+              onChange={(e) => setsearchParam(e.target.value)}
             />
-            <Button
-              className="btnSearch"
-              variant="outline-secondary"
-            >
+            <Button className="btnSearch" variant="outline-secondary" type='submit'>
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
@@ -43,21 +49,13 @@ export default function Searchajobs() {
               name="WorkType"
               className="BarWorkType form-control"
               onChange={(e) => {
-                handleSelect(e, e.target.value)
+                handleSelect(e.target.value);
               }}
             >
-                <option disabled>
-                    Select Work Type
-                </option>
-                <option>
-                    Full Time
-                </option>
-                <option>
-                    Part Time
-                </option>
-                <option>
-                    Remote
-                </option>
+              <option value={""}>Select Work Type</option>
+              <option>Full Time</option>
+              <option>Part Time</option>
+              <option>Remote</option>
             </select>
           </div>
         </Col>

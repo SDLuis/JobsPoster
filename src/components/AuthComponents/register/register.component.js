@@ -35,7 +35,7 @@ export default function RegistryComponent() {
   return (
     <div className="Register">
       <main>
-        <Form className="formularioReg ml-5 mr-5">
+        <Form className="formularioReg ml-4 mr-4">
           <Form.Group>
             <center>
               <h1>Register</h1>
