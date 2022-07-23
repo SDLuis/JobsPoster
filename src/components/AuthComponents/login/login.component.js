@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
@@ -6,9 +6,7 @@ import useUser from "../../../hooks/useUser";
 
 function LoginComponent() {
   let navigate = useNavigate();
-  const [password, setPassword] = useState("");
-  const [useremail, setUseremail] = useState("");
-  const { login, isLogged, failLogin } = useUser();
+  const { login, isLogged, setUseremail, setPassword } = useUser();
 
   useEffect(() => {
     if (isLogged) {
@@ -16,16 +14,6 @@ function LoginComponent() {
     }
   }, [isLogged, navigate]);
 
-  function Login() {
-    return login({ useremail, password });
-  }
-  function checkFilledFields() {
-    if (useremail === "" || password === "") {
-      return false;
-    } else {
-      return true;
-    }
-  }
   return (
     <div className="Login">
       <main>
@@ -63,11 +51,7 @@ function LoginComponent() {
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
-                if (checkFilledFields() === true) {
-                  Login();
-                } else {
-                  failLogin();
-                }
+                  login()
               }}
             >
               Log In

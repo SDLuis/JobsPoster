@@ -22,8 +22,7 @@ export default function FindJobs(job) {
         <Card.Footer>
           <Link
             to={`/jobs/${job.row.Job_ID}/postulate`}
-            className="btn btn-block"
-            variant="outline-dark"
+            className="btn btn-block btn-outline-success"
           >
             Postularse
           </Link>

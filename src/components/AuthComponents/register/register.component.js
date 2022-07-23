@@ -1,37 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { UseRegister } from "../../../hooks/useRegister";
 
 export default function RegistryComponent() {
-  const { Register, isRegister, failRegister } = UseRegister();
+  const { Register, isRegister, form, setForm } = UseRegister();
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    firstNameReg: "",
-    lastNameReg: "",
-    useremailReg: "",
-    passwordReg: "",
-  });
-
+  
   useEffect(() => {
     if (isRegister) {
       return navigate("/login");
     }
   }, [isRegister, navigate]);
 
-  function checkFilledFields() {
-    if (
-      form.firstNameReg === "" ||
-      form.lastNameReg === "" ||
-      form.useremailReg === "" ||
-      form.passwordReg === ""
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
   return (
     <div className="Register">
       <main>
@@ -92,11 +74,7 @@ export default function RegistryComponent() {
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
-                  if (checkFilledFields() === true) {
-                    Register(form);
-                  } else {
-                    failRegister()
-                  }
+                  Register();
                 }}
               >
                 Register

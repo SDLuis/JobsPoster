@@ -82,11 +82,11 @@ export default function PostulateComponent() {
           <Col>
             <Button
               className="btn btn-block mt-2"
-              variant="secondary"
+              variant="outline-light"
               type="submit"
             >
               <FontAwesomeIcon icon={faPaperPlane} />
-              Publicar
+              Enviar Correo
             </Button>
           </Col>
         </Form.Group>

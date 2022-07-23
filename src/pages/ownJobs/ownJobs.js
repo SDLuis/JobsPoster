@@ -15,7 +15,7 @@ export default function OwnJobs() {
   } = useOwnJob();
 
   if (loading) return <LoadingSpinner />;
-  if (!currentTableData && !loading)
+  if (currentTableData.length === 0 && !loading)
     return (
       <div className="List">
         <NotJobsFoundComponent

@@ -23,7 +23,7 @@ export default function Home() {
       <div>
         <SearchJobsComponent />
       </div>
-      {loading ? <LoadingSpinnerComponent /> : null}
+      {loading && currentTableData.length === 0  ? <LoadingSpinnerComponent /> : null}
       {jobs.length === 0 && !loading ? (
         <NotJobsFoundComponent
           message={"There are no jobs with this data, try to another."}

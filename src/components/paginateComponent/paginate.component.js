@@ -28,10 +28,12 @@ const Pagination = props => {
 
   const onNext = () => {
     onPageChange(currentPage + 1);
+    window.scrollTo(0, 0)
   };
 
   const onPrevious = () => {
     onPageChange(currentPage - 1);
+    window.scrollTo(0, 0)
   };
 
   let lastPage = paginationRange[paginationRange.length - 1];
@@ -57,7 +59,9 @@ const Pagination = props => {
             className={classnames('pagination-item', {
               selected: pageNumber === currentPage
             })}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => {
+              onPageChange(pageNumber)
+              window.scrollTo(0, 0)}}
           >
             {pageNumber}
           </li>

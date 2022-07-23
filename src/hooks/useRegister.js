@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { register } from "../services/user.service";
 
 import Swal from "sweetalert2";
@@ -9,9 +9,29 @@ const MySwal = withReactContent(Swal);
 export function UseRegister() {
 
   const [registed, setRegisted] = useState(false);
+  const [form, setForm] = useState({
+    firstNameReg: "",
+    lastNameReg: "",
+    useremailReg: "",
+    passwordReg: "",
+  });
 
-  const Register = async (body) => {
-   return await register(body)
+  const checkFilledFields = useCallback(()=> { 
+    if (
+      form.firstNameReg === "" ||
+      form.lastNameReg === "" ||
+      form.useremailReg === "" ||
+      form.passwordReg === ""
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  },[form.firstNameReg, form.lastNameReg, form.passwordReg, form.useremailReg])
+
+  const Register = useCallback(() => {
+    if(checkFilledFields()){
+   return register(form)
       .then((response) => {
         if (response.message) {
           MySwal.fire({
@@ -50,21 +70,19 @@ export function UseRegister() {
           timerProgressBar: true,
         });
       });
-  };
-
-  const failRegister = () => {
-    return  MySwal.fire({
-      title: "No se pudo registrar",
-      text: "Rellene todos los campos",
-      icon: "error",
-      confirmButtonText: true,
-      allowEnterKey: true,
-      allowEscapeKey: true,
-      allowOutsideClick: true,
-      timer: 3000,
-      timerProgressBar: true,
-    });
-  }
-
-  return { Register, isRegister: Boolean(registed), failRegister };
+    }else{
+      return  MySwal.fire({
+        title: "No se pudo registrar",
+        text: "Rellene todos los campos",
+        icon: "error",
+        confirmButtonText: true,
+        allowEnterKey: true,
+        allowEscapeKey: true,
+        allowOutsideClick: true,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+    }
+  },[checkFilledFields, form])
+  return { Register, isRegister: Boolean(registed), form, setForm };
 }
