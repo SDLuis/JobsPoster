@@ -8,7 +8,6 @@ function LoginComponent() {
   let navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [useremail, setUseremail] = useState("");
-  // const [LoginStatus, setLoginStatus] = useState("");
   const { login, isLogged, failLogin } = useUser();
 
   useEffect(() => {

@@ -1,50 +1,10 @@
-import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import * as jobService from "../../../services/job.service";
 import editJob from "../../../hooks/useEditJobs";
 import "./editJob.css";
 
 export default function EditJobsComponent() {
-  const { editJobsDone, editJobsFail } = editJob();
-  const params = useParams();
-  const Job_ID = params.Job_ID;
-  const [formData, setFormData] = useState({
-    workTitle: "",
-    Position: "",
-    workType: "",
-    applyMethod: "",
-    description: "",
-  });
-
-  useEffect(() => {
-    jobService.findJobs(Job_ID).then((job) => {
-      setFormData({
-        ...formData,
-        workTitle: job.work_Title,
-        Position: job.Position,
-        workType: job.workType,
-        applyMethod: job.apply_Method,
-        description: job.description,
-      });
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Job_ID]);
-
-  function checkFilledFields() {
-    if (
-      formData.workTitle === "" ||
-      formData.Position === "" ||
-      formData.workType === "Select work type" ||
-      formData.applyMethod === "" ||
-      formData.description === ""
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
+  const { editJobsDone, editJobsFail, formData, setFormData, checkFilledFields } = editJob();
+  
   return (
       <div className="Post">
       <Form>
@@ -114,7 +74,7 @@ export default function EditJobsComponent() {
             onClick={(e) => {
               e.preventDefault();
               if (checkFilledFields() === true) {
-                editJobsDone(Job_ID, formData);
+                editJobsDone(formData);
               } else {
                 editJobsFail();
               }

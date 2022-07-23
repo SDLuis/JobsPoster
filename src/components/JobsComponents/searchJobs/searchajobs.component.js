@@ -8,7 +8,7 @@ import jobContext from "../../../context/jobContext";
 
 import { getWorksByCategory, getWorksByWorkTitle, getWorks } from "../../../services/job.service";
 
-export default function Searchajobs() {
+export default function SearchJobs() {
   const { changeJobs, setCurrentPage } = useContext(jobContext);
   const [searchParam, setsearchParam] = useState('')
 

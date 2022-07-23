@@ -47,13 +47,13 @@ const Pagination = props => {
         <img src={arrowBack} alt='back'></img>
 
       </li>
-      {paginationRange.map(pageNumber => {
+      {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
-          return <li className="pagination-item dots">&#8230;</li>;
+          return <li key={index + Math.random} className="pagination-item dots">&#8230;</li>;
         }
 
         return (
-          <li
+          <li key={index}
             className={classnames('pagination-item', {
               selected: pageNumber === currentPage
             })}
