@@ -5,7 +5,7 @@ const authContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [jwt, setJWT] = useState(
-    () => Cookies.get('jwt')
+    () => Cookies.get('jwt2')
   );
 
   return (
