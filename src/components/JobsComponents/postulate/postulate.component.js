@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap";
 import {
   faPaperPlane,
@@ -8,28 +8,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./postulate.css";
+import UsePostulate from "../../../hooks/usePostulate";
+import { useNavigate } from "react-router-dom";
+
 
 export default function PostulateComponent() {
-  const [form, setForm] = useState({
-    email: "",
-    numberPhone: "",
-    message: "",
-    file: "",
-  });
+  const { sendEmail, form, setForm, isLoading, emailSend } = UsePostulate();
+  let navigate = useNavigate();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const file = new FormData();
-    file.append("file", form.file);
-    file.append("email", form.email);
-    file.append("numberPhone", form.numberPhone);
-    file.append("message", form.message);
-    console.log(Object.fromEntries(file));
-  };
+  useEffect(() => {
+    if (emailSend) {
+      return navigate("/");
+    }
+  }, [emailSend, navigate]);
+
   return (
     <div>
       <Form className="FormPostulate" onSubmit={sendEmail}>
         <Form.Group>
+          <Form.Label hidden={!isLoading}>Validando Credenciales...</Form.Label>
+          </Form.Group>
+          <Form.Group>
           <Form.Label>
             <FontAwesomeIcon icon={faEnvelope} /> Email
           </Form.Label>
@@ -75,7 +74,6 @@ export default function PostulateComponent() {
             onChange={(e) => {
               setForm({ ...form, file: e.target.files[0] });
             }}
-            multiple
           />
         </Form.Group>
         <Form.Group as={Row}>
@@ -84,6 +82,7 @@ export default function PostulateComponent() {
               className="btn btn-block mt-2"
               variant="outline-light"
               type="submit"
+              disabled={isLoading}
             >
               <FontAwesomeIcon icon={faPaperPlane} />
               Enviar Correo

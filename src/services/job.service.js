@@ -87,3 +87,13 @@ export const deleteJobs = async (Job_ID) => {
       return response.data;
     });
 };
+
+export const postulate = async (file) => {
+  return await axios.post(`${process.env.REACT_APP_API_URL}/jobs/postulate`, file,{ 
+    headers: {
+    'Content-Type': 'multipart/form-data'
+  }})
+  .then((response)=>{
+    return response.data
+  })
+}

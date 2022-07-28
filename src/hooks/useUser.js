@@ -38,7 +38,7 @@ export default function useUser() {
             });
           } else {
             setJWT(res.data);
-            Cookies.set("jwt", `${res.data}`, { expires: 7 });
+            Cookies.set("jwt", `${res.data}`, { expires: 1/24 });
           }
         })
         .catch((err) => {
