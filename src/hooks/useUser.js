@@ -72,7 +72,7 @@ export default function useUser() {
   );
 
   const logout = useCallback(() => {
-    Cookies.remove("jwt");
+    Cookies.remove("jwt2");
     setJWT(null)
   }, [setJWT]);
 
