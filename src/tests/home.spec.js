@@ -12,7 +12,7 @@ test("homepage has JobsPoster in the Navbar", async ({ page }) => {
 });
 
 test("homepage has content from api", async ({ page }) => {
-  await expect(page.locator(".titulo").first()).toHaveText("Base de datos Jr");
+  await expect(page.locator(".titulo").first()).toHaveText("Diseñador Gráfico");
   await expect(page.locator(".VerMas").first()).toHaveText("Ver mas");
 });
 
@@ -22,11 +22,17 @@ test("worktype change", async ({ page }) => {
   await expect(page.locator(".card-text").first()).toHaveText("Remote");
 });
 
-test.only("seachbar work", async ({ page }) => {
+test("seachbar work", async ({ page }) => {
+  const text = 'Diseñador Gráfico'
   const BarSearch = page.locator(".BarSearch");
-  await BarSearch.fill("Seguridad Industrial");
+  await BarSearch.fill(text);
   await page.locator(".btnSearch").click();
-  await expect(page.locator(".titulo").first()).toHaveText(
-    "Seguridad Industrial"
-  );
+  await expect(page.locator(".titulo").first()).toHaveText(text);
+});
+
+test("see more", async ({ page }) => {
+  const text = 'Diseñador Gráfico'
+  await expect(page.locator(".titulo").first()).toHaveText(text);
+  await page.locator("text=Ver mas").first().click();
+  await expect(page.locator(".Header")).toHaveText(text);
 });

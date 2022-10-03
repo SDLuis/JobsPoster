@@ -12,7 +12,8 @@ export default function EditJobsComponent() {
           <Form.Label>Work Title</Form.Label>
           <Form.Control
             type="Text"
-            name="work_Title"
+            name="workTitle"
+            className="workTitle"
             value={formData.workTitle}
             onChange={(e) => {
               setFormData({ ...formData, workTitle: e.target.value });

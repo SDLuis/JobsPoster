@@ -20,14 +20,14 @@ export default function RegistryComponent() {
         <Form className="formularioReg ml-4 mr-4">
           <Form.Group>
             <center>
-              <h1>Register</h1>
+              <h1 className="title">Register</h1>
             </center>
           </Form.Group>
           <Form.Group className="form-row">
             <Form.Group className="col-md-6">
               <Form.Label>First Name</Form.Label>
               <Form.Control
-                name="User_Name"
+                name="User_Fname"
                 type="text"
                 onChange={(e) => {
                   setForm({ ...form, firstNameReg: e.target.value });
@@ -37,7 +37,7 @@ export default function RegistryComponent() {
             <Form.Group className="col-md-6">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
-                name="User_Name"
+                name="User_Lname"
                 type="text"
                 onChange={(e) => {
                   setForm({ ...form, lastNameReg: e.target.value });

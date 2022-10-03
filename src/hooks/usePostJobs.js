@@ -35,7 +35,7 @@ export default function usePostJobs() {
           let serverResponse = res.status;
           if (serverResponse === 200) {
             MySwal.fire({
-              title: "Se anadio el trabajo correctamente",
+              title: "Se añadio el trabajo correctamente",
               icon: res.data.icon,
               confirmButtonText: "OKE",
               allowEnterKey: true,

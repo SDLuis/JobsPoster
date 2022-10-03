@@ -34,7 +34,7 @@ export default function NavbarComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavDropdown
-              className="brand-name"
+              className="brand-name add-jobs"
               title="Jobs"
               id="basic-nav-dropdown"
               hidden={!isLogged}

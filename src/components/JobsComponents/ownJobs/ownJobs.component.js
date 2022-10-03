@@ -33,14 +33,14 @@ export default function OwnJobs(jobs) {
                   <td>
                     <Button
                       variant="outline-danger"
-                      className="Modificadores"
+                      className="Modificadores delete"
                       onClick={() => DeleteJob(job.Job_ID)}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </Button>
                     <Button
                       variant="outline-warning"
-                      className="Modificadores"
+                      className="Modificadores edit"
                       href={`/jobs/${job.Job_ID}/edit`}
                     >
                       <FontAwesomeIcon icon={faEdit} />

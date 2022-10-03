@@ -46,7 +46,7 @@ export function UseRegister() {
           });
         } else {
           MySwal.fire({
-            title: "Registro exitoso, redirigiendo",
+            title: "Registro exitoso, redirigiendo...",
             icon: "success",
             confirmButtonText: true,
             allowEnterKey: true,

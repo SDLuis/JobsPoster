@@ -14,6 +14,7 @@ export default function PostJobsComponent() {
           <Form.Control
             type="Text"
             name="workTitle"
+            className="workTitle"
             onChange={(e) => {
               setFormData({ ...formData, workTitle: e.target.value });
             }}
